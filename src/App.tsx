@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BottomRow from "./components/BottomRow";
 import ChartSection from "./components/ChartSection";
-import Header from "./components/Navigation";
+import Header from "./components/Header";
 import Stats from "./components/Stats";
 import AppTour from "./components/AppTour";
 
@@ -14,6 +14,7 @@ import {
 } from "react-icons/fi";
 
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { IoMdSkipForward } from "react-icons/io";
 
 function App() {
   const [showTour, setShowTour] = useState(true);
@@ -79,11 +80,24 @@ function App() {
           />
         )}
         <div
-          className="absolute top- right-5 text-2xl cursor-pointer text-blue-400"
+          className="fixed bottom-6 right-6 md:top-6 md:bottom-auto z-50 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow-lg transition duration-300 ease-in-out"
           onClick={() => setShowTour(true)}
+          style={{
+            display: showTour ? "none" : "",
+          }}
         >
-          <AiOutlineExclamationCircle />
+          <AiOutlineExclamationCircle size={30} />
         </div>
+        <div
+          className="fixed bottom-6 right-6  m z-50 cursor-pointer bg-green-600 hover:bg-green-700 gap-1 text-white p-2 rounded flex items-center shadow-lg transition duration-300 ease-in-out"
+          onClick={() => setShowTour(false)}
+          style={{
+            display: showTour ? "" : "none",
+          }}
+        >
+          Skip Tour <IoMdSkipForward />
+        </div>
+
         <Header />
         <main className="py-8">
           <Stats />

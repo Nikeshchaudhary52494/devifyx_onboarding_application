@@ -39,7 +39,7 @@ export const useHighlightPosition = (
           height: rect.height,
         });
 
-        element.style.zIndex = "50";
+        element.style.zIndex = "40";
         element.style.position = "relative";
         previousElementRef.current = element;
       }

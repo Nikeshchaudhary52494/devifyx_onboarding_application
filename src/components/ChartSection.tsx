@@ -1,27 +1,69 @@
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+
+import { FaChevronDown } from "react-icons/fa";
+
 export default function ChartSection() {
+  const [range, setRange] = useState("Weekly");
+
+  const options = ["Weekly", "Monthly", "Yearly"];
+
   return (
     <div
       id="chart"
       className="bg-white rounded-xl shadow-sm p-6 mb-8 animate-slide-up delay-100"
     >
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 className="sm:text-xl font-semibold text-gray-800">
           Performance Overview
         </h2>
-        <div className="flex space-x-2">
-          <button className="px-3 py-1 text-sm bg-blue-50 text-blue-500 rounded-lg">
-            Weekly
-          </button>
-          <button className="px-3 py-1 text-sm text-gray-500 hover:bg-gray-50 rounded-lg">
-            Monthly
-          </button>
-          <button className="px-3 py-1 text-sm text-gray-500 hover:bg-gray-50 rounded-lg">
-            Yearly
-          </button>
+
+        {/* Dropdown for small screens */}
+        <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="text-sml 20">
+                {range} <FaChevronDown size={5} />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {options.map((option) => (
+                <DropdownMenuItem
+                  key={option}
+                  onSelect={() => setRange(option)}
+                >
+                  {option}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
+        {/* Button group for medium and up */}
+        <div className="hidden md:flex space-x-2">
+          {options.map((option) => (
+            <Button
+              key={option}
+              variant={range === option ? "default" : "outline"}
+              size="sm"
+              onClick={() => setRange(option)}
+            >
+              {option}
+            </Button>
+          ))}
         </div>
       </div>
+
       <div className="h-80 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center">
-        <p className="text-gray-500">Chart visualization will appear here</p>
+        <p className="text-gray-500 p-2">
+          Chart visualization for <strong>{range}</strong> will appear here
+        </p>
       </div>
     </div>
   );
