@@ -32,6 +32,7 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
     if (currentStep < features.length - 1) setCurrentStep(currentStep + 1);
     else {
       onClose();
+      localStorage.setItem("devifyx_onboarding", "done");
       if (previousElementRef.current) {
         previousElementRef.current.style.zIndex = "";
       }

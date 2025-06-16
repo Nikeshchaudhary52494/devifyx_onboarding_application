@@ -17,10 +17,12 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { IoMdSkipForward } from "react-icons/io";
 
 function App() {
-  const [showTour, setShowTour] = useState(true);
+  const [showTour, setShowTour] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const onboarding_status = localStorage.getItem("devifyx_onboarding");
+    if (onboarding_status != "done") setShowTour(true);
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
