@@ -17,12 +17,10 @@ export default function ChartSection() {
   return (
     <div
       id="chart"
-      className="bg-white rounded-xl shadow-sm p-6 mb-8 animate-slide-up delay-100"
+      className="bg-card border rounded-xl p-6 mb-8 animate-slide-up delay-100"
     >
       <div className="flex justify-between items-center mb-6">
-        <h2 className="sm:text-xl font-semibold text-gray-800">
-          Performance Overview
-        </h2>
+        <h2 className="sm:text-xl font-semibold">Performance Overview</h2>
 
         {/* Dropdown for small screens */}
         <div className="md:hidden">
@@ -60,7 +58,7 @@ export default function ChartSection() {
         </div>
       </div>
 
-      <div className="h-80 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center">
+      <div className="h-80 border bg-accent rounded-lg flex items-center justify-center">
         <p className="text-gray-500 p-2">
           Chart visualization for <strong>{range}</strong> will appear here
         </p>

@@ -71,7 +71,7 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-50 p-5">
+    <div className="bg-background p-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 z-10 lg:px-8">
         {showTour && (
           <AppTour

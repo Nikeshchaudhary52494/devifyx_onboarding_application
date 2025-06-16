@@ -5,11 +5,11 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="bg-white rounded-xl shadow-sm p-6 animate-fade-in"
+      className="bg-card border rounded-xl p-6 animate-fade-in"
     >
       <div className="flex justify-between items-center">
-        <h1 className="text-xl md:text-3xl font-bold text-gray-800 flex items-center">
-          <span className="bg-blue-500 text-white p-2 rounded-lg mr-3">
+        <h1 className="text-xl md:text-3xl font-bold text-primary flex items-center">
+          <span className="bg-blue-500 text-primary-foreground p-2 rounded-lg mr-3">
             <FiHome />
           </span>
           devifyX

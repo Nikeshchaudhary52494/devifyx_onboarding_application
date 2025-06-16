@@ -47,7 +47,7 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
   return (
     <>
       {/* Dim Background */}
-      <div className="fixed inset-0 z-10 bg-black/20 transition-opacity duration-300"></div>
+      <div className="fixed inset-0 z-10 bg-black/20 backdrop-blur-sm dark:bg-white/20  transition-opacity duration-300"></div>
 
       {/* Highlight Box */}
       <div
@@ -64,7 +64,7 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
 
       {/* Tooltip */}
       <div
-        className="absolute z-10 bg-white rounded-xl shadow-xl max-w-sm transition-all duration-300"
+        className="absolute z-10 bg-card rounded-xl shadow-xl max-w-sm transition-all duration-300"
         style={{
           top: `${
             position.top + position.height + 220 > window.innerHeight
@@ -74,12 +74,12 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
           left: `${Math.min(position.left, window.innerWidth - 400)}px`,
         }}
       >
-        <div className="p-6">
+        <div className="p-6 ">
           {/* Title and Close */}
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center">
               {currentFeature?.icon}
-              <h3 className="text-lg font-semibold text-gray-800 ml-2">
+              <h3 className="text-lg font-semibold ml-2">
                 {currentFeature?.title}
               </h3>
             </div>
@@ -92,7 +92,9 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
           </div>
 
           {/* Content */}
-          <p className="text-gray-600 mb-6">{currentFeature?.content}</p>
+          <p className="text-accent-foreground/70 mb-6">
+            {currentFeature?.content}
+          </p>
 
           {/* Progress & Buttons */}
           <div className="flex justify-between items-center">

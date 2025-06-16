@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { IoMenu } from "react-icons/io5";
 import { FiSettings, FiHome, FiPieChart, FiFileText } from "react-icons/fi";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Navbar() {
   return (
@@ -56,6 +57,7 @@ export default function Navbar() {
         <Button variant="ghost" className="flex items-center">
           <FiSettings className="mr-2" /> Settings
         </Button>
+        <ModeToggle />
       </div>
     </nav>
   );
