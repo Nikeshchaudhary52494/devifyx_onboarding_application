@@ -1,34 +1,37 @@
+import { useTranslation } from "react-i18next";
 import { FiUsers, FiDollarSign, FiTrendingUp } from "react-icons/fi";
 import StatsCard from "./StatsCard";
 
-const statsData = [
-  {
-    title: "Total Users",
-    value: "1,842",
-    change: "↑ 12% from last month",
-    icon: <FiUsers size={24} />,
-    iconBgColor: "bg-blue-50",
-    iconTextColor: "text-blue-500",
-  },
-  {
-    title: "Revenue",
-    value: "$42,389",
-    change: "↑ 8% from last month",
-    icon: <FiDollarSign size={24} />,
-    iconBgColor: "bg-green-50",
-    iconTextColor: "text-green-500",
-  },
-  {
-    title: "Conversion",
-    value: "3.7%",
-    change: "↑ 1.2% from last month",
-    icon: <FiTrendingUp size={24} />,
-    iconBgColor: "bg-purple-50",
-    iconTextColor: "text-purple-500",
-  },
-];
-
 export default function Stats() {
+  const { t } = useTranslation();
+
+  const statsData = [
+    {
+      title: t("stats.totalUsers"),
+      value: "1,842",
+      change: t("stats.totalUsersChange"),
+      icon: <FiUsers size={24} />,
+      iconBgColor: "bg-blue-50",
+      iconTextColor: "text-blue-500",
+    },
+    {
+      title: t("stats.revenue"),
+      value: "$42,389",
+      change: t("stats.revenueChange"),
+      icon: <FiDollarSign size={24} />,
+      iconBgColor: "bg-green-50",
+      iconTextColor: "text-green-500",
+    },
+    {
+      title: t("stats.conversion"),
+      value: "3.7%",
+      change: t("stats.conversionChange"),
+      icon: <FiTrendingUp size={24} />,
+      iconBgColor: "bg-purple-50",
+      iconTextColor: "text-purple-500",
+    },
+  ];
+
   return (
     <div
       id="stats"

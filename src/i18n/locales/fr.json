@@ -1,0 +1,68 @@
+{
+  "navbar": {
+    "navigation": "Navigation",
+    "home": "Accueil",
+    "analytics": "Analytique",
+    "reports": "Rapports",
+    "settings": "Paramètres"
+  },
+  "stats": {
+    "totalUsers": "Utilisateurs totaux",
+    "totalUsersChange": "↑ 12% par rapport au mois dernier",
+    "revenue": "Revenu",
+    "revenueChange": "↑ 8% par rapport au mois dernier",
+    "conversion": "Conversion",
+    "conversionChange": "↑ 1,2% par rapport au mois dernier"
+  },
+  "recentActivity": {
+    "title": "Activité récente",
+    "viewAll": "Voir tout",
+    "newUser": "Nouvel utilisateur inscrit - John Doe",
+    "systemUpdate": "Mise à jour du système vers la version 2.4 terminée",
+    "newReport": "Nouveau rapport généré - Ventes mensuelles",
+    "passwordChanged": "Mot de passe changé pour le compte administrateur",
+    "time10min": "il y a 10 minutes",
+    "time2hours": "il y a 2 heures",
+    "timeYesterday": "hier",
+    "time2days": "il y a 2 jours"
+  },
+  "quickActions": {
+    "title": "Actions rapides",
+    "generateReport": "Générer un rapport",
+    "addUser": "Ajouter un utilisateur",
+    "processPayment": "Traiter le paiement",
+    "settings": "Paramètres"
+  },
+  "chartSection": {
+    "performanceOverview": "Aperçu des performances",
+    "weekly": "Hebdomadaire",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "chartText": "La visualisation du graphique pour {{range}} apparaîtra ici"
+  },
+  "buttons": {
+    "skipTour": "Passer la visite"
+  },
+  "tour": {
+    "header": {
+      "title": "Navigation du tableau de bord",
+      "content": "Accédez rapidement à toutes les sections de votre tableau de bord ici."
+    },
+    "stats": {
+      "title": "Indicateurs de performance clés",
+      "content": "Surveillez vos indicateurs commerciaux les plus importants en temps réel."
+    },
+    "chart": {
+      "title": "Tableau de bord analytique",
+      "content": "Des visualisations interactives vous aident à comprendre les tendances et les modèles."
+    },
+    "recentActivity": {
+      "title": "Fil d'activité",
+      "content": "Restez informé des derniers événements et notifications système."
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "content": "Effectuez des tâches courantes en un seul clic."
+    }
+  }
+}

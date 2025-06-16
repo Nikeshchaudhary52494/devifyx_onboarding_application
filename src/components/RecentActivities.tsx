@@ -1,33 +1,41 @@
-export default function RecentActivites() {
+import { useTranslation } from "react-i18next";
+
+export default function RecentActivities() {
+  const { t } = useTranslation();
+
+  const activities = [
+    {
+      id: 1,
+      text: t("recentActivity.newUser"),
+      time: t("recentActivity.time10min"),
+    },
+    {
+      id: 2,
+      text: t("recentActivity.systemUpdate"),
+      time: t("recentActivity.time2hours"),
+    },
+    {
+      id: 3,
+      text: t("recentActivity.newReport"),
+      time: t("recentActivity.timeYesterday"),
+    },
+    {
+      id: 4,
+      text: t("recentActivity.passwordChanged"),
+      time: t("recentActivity.time2days"),
+    },
+  ];
+
   return (
     <div id="recent-activity" className="bg-card border rounded-xl p-6">
       <div className="flex items-center mb-6">
-        <h2 className="text-xl font-semibold">Recent Activity</h2>
-        <span className="ml-auto text-sm text-blue-500">View All</span>
+        <h2 className="text-xl font-semibold">{t("recentActivity.title")}</h2>
+        <span className="ml-auto text-sm text-blue-500">
+          {t("recentActivity.viewAll")}
+        </span>
       </div>
       <div className="space-y-4">
-        {[
-          {
-            id: 1,
-            text: "New user registered - John Doe",
-            time: "10 mins ago",
-          },
-          {
-            id: 2,
-            text: "System update completed to v2.4",
-            time: "2 hours ago",
-          },
-          {
-            id: 3,
-            text: "New report generated - Monthly Sales",
-            time: "yesterday",
-          },
-          {
-            id: 4,
-            text: "Password changed for admin account",
-            time: "2 days ago",
-          },
-        ].map((item) => (
+        {activities.map((item) => (
           <div key={item.id} className="flex items-start group">
             <div className="flex-shrink-0 h-2 w-2 mt-2 bg-blue-500 rounded-full"></div>
             <div className="ml-3">

@@ -4,6 +4,7 @@ import ChartSection from "./components/ChartSection";
 import Header from "./components/Header";
 import Stats from "./components/Stats";
 import AppTour from "./components/AppTour";
+import "./i18n/i18n";
 
 import {
   FiActivity,
@@ -15,14 +16,17 @@ import {
 
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { IoMdSkipForward } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
-function App() {
+export default function App() {
+  const { t } = useTranslation();
+
   const [showTour, setShowTour] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const onboarding_status = localStorage.getItem("devifyx_onboarding");
-    if (onboarding_status != "done") setShowTour(true);
+    if (onboarding_status !== "done") setShowTour(true);
     const timer = setTimeout(() => setIsLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
@@ -30,33 +34,32 @@ function App() {
   const dashboardFeatures = [
     {
       id: "header",
-      title: "Dashboard Navigation",
-      content: "Access all sections of your dashboard quickly from here.",
+      title: t("tour.header.title"),
+      content: t("tour.header.content"),
       icon: <FiHome className="text-blue-500" />,
     },
     {
       id: "stats",
-      title: "Key Performance Metrics",
-      content: "Monitor your most important business metrics in real-time.",
+      title: t("tour.stats.title"),
+      content: t("tour.stats.content"),
       icon: <FiTrendingUp className="text-blue-500" />,
     },
     {
       id: "chart",
-      title: "Analytics Dashboard",
-      content:
-        "Interactive visualizations help you understand trends and patterns.",
+      title: t("tour.chart.title"),
+      content: t("tour.chart.content"),
       icon: <FiPieChart className="text-blue-500" />,
     },
     {
       id: "recent-activity",
-      title: "Activity Feed",
-      content: "Stay updated with the latest system events and notifications.",
+      title: t("tour.recentActivity.title"),
+      content: t("tour.recentActivity.content"),
       icon: <FiActivity className="text-blue-500" />,
     },
     {
       id: "quick-actions",
-      title: "Quick Actions",
-      content: "Perform common tasks with just one click.",
+      title: t("tour.quickActions.title"),
+      content: t("tour.quickActions.content"),
       icon: <FiSettings className="text-blue-500" />,
     },
   ];
@@ -81,23 +84,21 @@ function App() {
             onClose={() => setShowTour(false)}
           />
         )}
+
         <div
           className="fixed bottom-6 right-6 md:top-6 md:bottom-auto z-50 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow-lg transition duration-300 ease-in-out"
           onClick={() => setShowTour(true)}
-          style={{
-            display: showTour ? "none" : "",
-          }}
+          style={{ display: showTour ? "none" : "" }}
         >
           <AiOutlineExclamationCircle size={30} />
         </div>
+
         <div
-          className="fixed bottom-6 right-6  m z-50 cursor-pointer bg-green-600 hover:bg-green-700 gap-1 text-white p-2 rounded flex items-center shadow-lg transition duration-300 ease-in-out"
+          className="fixed bottom-6 right-6 z-50 cursor-pointer bg-green-600 hover:bg-green-700 gap-1 text-white p-2 rounded flex items-center shadow-lg transition duration-300 ease-in-out"
           onClick={() => setShowTour(false)}
-          style={{
-            display: showTour ? "" : "none",
-          }}
+          style={{ display: showTour ? "" : "none" }}
         >
-          Skip Tour <IoMdSkipForward />
+          {t("buttons.skipTour")} <IoMdSkipForward />
         </div>
 
         <Header />
@@ -110,5 +111,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,0 +1,68 @@
+{
+  "navbar": {
+    "navigation": "ナビゲーション",
+    "home": "ホーム",
+    "analytics": "分析",
+    "reports": "レポート",
+    "settings": "設定"
+  },
+  "stats": {
+    "totalUsers": "総ユーザー数",
+    "totalUsersChange": "↑ 前月比12％増",
+    "revenue": "収益",
+    "revenueChange": "↑ 前月比8％増",
+    "conversion": "コンバージョン",
+    "conversionChange": "↑ 前月比1.2％増"
+  },
+  "recentActivity": {
+    "title": "最近の活動",
+    "viewAll": "すべて表示",
+    "newUser": "新しいユーザーが登録しました - ジョン・ドウ",
+    "systemUpdate": "システムがバージョン2.4に更新されました",
+    "newReport": "新しいレポートが生成されました - 月間売上",
+    "passwordChanged": "管理者アカウントのパスワードが変更されました",
+    "time10min": "10分前",
+    "time2hours": "2時間前",
+    "timeYesterday": "昨日",
+    "time2days": "2日前"
+  },
+  "quickActions": {
+    "title": "クイックアクション",
+    "generateReport": "レポートを生成",
+    "addUser": "ユーザーを追加",
+    "processPayment": "支払いを処理",
+    "settings": "設定"
+  },
+  "chartSection": {
+    "performanceOverview": "パフォーマンス概要",
+    "weekly": "週次",
+    "monthly": "月次",
+    "yearly": "年次",
+    "chartText": "{{range}}のチャートビジュアライゼーションがここに表示されます"
+  },
+  "buttons": {
+    "skipTour": "ツアーをスキップ"
+  },
+  "tour": {
+    "header": {
+      "title": "ダッシュボードナビゲーション",
+      "content": "ここからすべてのダッシュボードセクションに素早くアクセスできます。"
+    },
+    "stats": {
+      "title": "主要業績指標",
+      "content": "リアルタイムで最も重要なビジネスメトリクスを監視します。"
+    },
+    "chart": {
+      "title": "分析ダッシュボード",
+      "content": "インタラクティブな可視化により傾向やパターンを理解できます。"
+    },
+    "recentActivity": {
+      "title": "アクティビティフィード",
+      "content": "最新のシステムイベントと通知を確認しましょう。"
+    },
+    "quickActions": {
+      "title": "クイックアクション",
+      "content": "ワンクリックで一般的なタスクを実行できます。"
+    }
+  }
+}

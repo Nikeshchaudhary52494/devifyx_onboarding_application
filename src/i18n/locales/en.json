@@ -1,0 +1,68 @@
+{
+  "navbar": {
+    "navigation": "Navigation",
+    "home": "Home",
+    "analytics": "Analytics",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "stats": {
+    "totalUsers": "Total Users",
+    "totalUsersChange": "↑ 12% from last month",
+    "revenue": "Revenue",
+    "revenueChange": "↑ 8% from last month",
+    "conversion": "Conversion",
+    "conversionChange": "↑ 1.2% from last month"
+  },
+  "recentActivity": {
+    "title": "Recent Activity",
+    "viewAll": "View All",
+    "newUser": "New user registered - John Doe",
+    "systemUpdate": "System update completed to v2.4",
+    "newReport": "New report generated - Monthly Sales",
+    "passwordChanged": "Password changed for admin account",
+    "time10min": "10 mins ago",
+    "time2hours": "2 hours ago",
+    "timeYesterday": "yesterday",
+    "time2days": "2 days ago"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "generateReport": "Generate Report",
+    "addUser": "Add User",
+    "processPayment": "Process Payment",
+    "settings": "Settings"
+  },
+  "chartSection": {
+    "performanceOverview": "Performance Overview",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "chartText": "Chart visualization for {{range}} will appear here"
+  },
+  "buttons": {
+    "skipTour": "Skip Tour"
+  },
+  "tour": {
+    "header": {
+      "title": "Dashboard Navigation",
+      "content": "Access all sections of your dashboard quickly from here."
+    },
+    "stats": {
+      "title": "Key Performance Metrics",
+      "content": "Monitor your most important business metrics in real-time."
+    },
+    "chart": {
+      "title": "Analytics Dashboard",
+      "content": "Interactive visualizations help you understand trends and patterns."
+    },
+    "recentActivity": {
+      "title": "Activity Feed",
+      "content": "Stay updated with the latest system events and notifications."
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "content": "Perform common tasks with just one click."
+    }
+  }
+}
