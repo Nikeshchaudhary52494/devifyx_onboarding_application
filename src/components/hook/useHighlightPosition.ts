@@ -1,11 +1,5 @@
-import { useEffect, useState, useRef, type ReactNode } from "react";
-
-interface FeatureStep {
-  id: string;
-  title: string;
-  content: string;
-  icon?: ReactNode;
-}
+import type { FeatureStep } from "@/types";
+import { useEffect, useState, useRef } from "react";
 
 export const useHighlightPosition = (
   features: FeatureStep[],
@@ -41,6 +35,11 @@ export const useHighlightPosition = (
 
         element.style.zIndex = "40";
         element.style.position = "relative";
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
         previousElementRef.current = element;
       }
     };

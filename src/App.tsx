@@ -6,23 +6,19 @@ import Stats from "./components/Stats";
 import AppTour from "./components/AppTour";
 import "./i18n/i18n";
 
-import {
-  FiActivity,
-  FiHome,
-  FiPieChart,
-  FiSettings,
-  FiTrendingUp,
-} from "react-icons/fi";
-
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { IoMdSkipForward } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import { getDashboardFeatures } from "./lib/data";
+import Loader from "./components/Loader";
 
 export default function App() {
   const { t } = useTranslation();
 
   const [showTour, setShowTour] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const dashboardFeatures = getDashboardFeatures(t);
 
   useEffect(() => {
     const onboarding_status = localStorage.getItem("devifyx_onboarding");
@@ -31,49 +27,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const dashboardFeatures = [
-    {
-      id: "header",
-      title: t("tour.header.title"),
-      content: t("tour.header.content"),
-      icon: <FiHome className="text-blue-500" />,
-    },
-    {
-      id: "stats",
-      title: t("tour.stats.title"),
-      content: t("tour.stats.content"),
-      icon: <FiTrendingUp className="text-blue-500" />,
-    },
-    {
-      id: "chart",
-      title: t("tour.chart.title"),
-      content: t("tour.chart.content"),
-      icon: <FiPieChart className="text-blue-500" />,
-    },
-    {
-      id: "recent-activity",
-      title: t("tour.recentActivity.title"),
-      content: t("tour.recentActivity.content"),
-      icon: <FiActivity className="text-blue-500" />,
-    },
-    {
-      id: "quick-actions",
-      title: t("tour.quickActions.title"),
-      content: t("tour.quickActions.content"),
-      icon: <FiSettings className="text-blue-500" />,
-    },
-  ];
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="animate-pulse flex flex-col items-center">
-          <div className="w-16 h-16 bg-blue-500 rounded-full mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-32"></div>
-        </div>
-      </div>
-    );
-  }
+  if (isLoading) return <Loader />;
 
   return (
     <div className="bg-background p-5">

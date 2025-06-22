@@ -1,20 +1,9 @@
-import { useState, useEffect, type ReactNode } from "react";
+import { useState, useEffect } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useHighlightPosition } from "./hook/useHighlightPosition";
+import type { AppTourProps } from "@/types";
 
-interface FeatureStep {
-  id: string;
-  title: string;
-  content: string;
-  icon?: ReactNode;
-}
-
-interface AppTourProps {
-  features: FeatureStep[];
-  onClose: () => void;
-}
-
-const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
+export default function AppTour({ features, onClose }: AppTourProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const { position, previousElementRef } = useHighlightPosition(
@@ -36,6 +25,11 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
       if (previousElementRef.current) {
         previousElementRef.current.style.zIndex = "";
       }
+      document.getElementById("header")?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
     }
   };
 
@@ -47,10 +41,8 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
 
   return (
     <>
-      {/* Dim Background */}
       <div className="fixed inset-0 z-10 bg-black/20 backdrop-blur-sm dark:bg-white/20  transition-opacity duration-300"></div>
 
-      {/* Highlight Box */}
       <div
         className={`absolute z-10 border-2 border-blue-400 rounded-xl transition-all duration-300 ${
           isAnimating ? "animate-pulse" : ""
@@ -63,7 +55,6 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
         }}
       />
 
-      {/* Tooltip */}
       <div
         className="absolute z-10 bg-card rounded-xl shadow-xl max-w-sm transition-all duration-300"
         style={{
@@ -76,7 +67,6 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
         }}
       >
         <div className="p-6 ">
-          {/* Title and Close */}
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center">
               {currentFeature?.icon}
@@ -92,12 +82,10 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
             </button>
           </div>
 
-          {/* Content */}
           <p className="text-accent-foreground/70 mb-6">
             {currentFeature?.content}
           </p>
 
-          {/* Progress & Buttons */}
           <div className="flex justify-between items-center">
             <div className="flex space-x-2">
               {features.map((_, index) => (
@@ -135,6 +123,4 @@ const AppTour: React.FC<AppTourProps> = ({ features, onClose }) => {
       </div>
     </>
   );
-};
-
-export default AppTour;
+}
