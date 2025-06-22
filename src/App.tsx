@@ -7,7 +7,6 @@ import AppTour from "./components/AppTour";
 import "./i18n/i18n";
 
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { IoMdSkipForward } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { getDashboardFeatures } from "./lib/data";
 import Loader from "./components/Loader";
@@ -35,7 +34,8 @@ export default function App() {
         {showTour && (
           <AppTour
             features={dashboardFeatures}
-            onClose={() => setShowTour(false)}
+            showTour={showTour}
+            setShowTour={setShowTour}
           />
         )}
 
@@ -45,14 +45,6 @@ export default function App() {
           style={{ display: showTour ? "none" : "" }}
         >
           <AiOutlineExclamationCircle size={30} />
-        </div>
-
-        <div
-          className="fixed bottom-6 right-6 z-50 cursor-pointer bg-green-600 hover:bg-green-700 gap-1 text-white p-2 rounded flex items-center shadow-lg transition duration-300 ease-in-out"
-          onClick={() => setShowTour(false)}
-          style={{ display: showTour ? "" : "none" }}
-        >
-          {t("buttons.skipTour")} <IoMdSkipForward />
         </div>
 
         <Header />

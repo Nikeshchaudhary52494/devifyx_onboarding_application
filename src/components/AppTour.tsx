@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useHighlightPosition } from "./hook/useHighlightPosition";
 import type { AppTourProps } from "@/types";
+import { Button } from "./ui/button";
+import { IoMdSkipForward } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
-export default function AppTour({ features, onClose }: AppTourProps) {
+export default function AppTour({
+  features,
+  setShowTour,
+  showTour,
+}: AppTourProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const { position, previousElementRef } = useHighlightPosition(
@@ -11,26 +18,30 @@ export default function AppTour({ features, onClose }: AppTourProps) {
     currentStep
   );
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     setIsAnimating(true);
     const timer = setTimeout(() => setIsAnimating(false), 500);
     return () => clearTimeout(timer);
   }, [currentStep]);
 
+  const handleClose = () => {
+    setShowTour(false);
+    localStorage.setItem("devifyx_onboarding", "done");
+    if (previousElementRef.current) {
+      previousElementRef.current.style.zIndex = "";
+    }
+    document.getElementById("header")?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  };
+
   const handleNext = () => {
     if (currentStep < features.length - 1) setCurrentStep(currentStep + 1);
-    else {
-      onClose();
-      localStorage.setItem("devifyx_onboarding", "done");
-      if (previousElementRef.current) {
-        previousElementRef.current.style.zIndex = "";
-      }
-      document.getElementById("header")?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
-    }
+    else handleClose();
   };
 
   const handlePrev = () => {
@@ -74,12 +85,12 @@ export default function AppTour({ features, onClose }: AppTourProps) {
                 {currentFeature?.title}
               </h3>
             </div>
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+            <Button
+              onClick={() => handleClose()}
+              className="text-gray-400 hover:text-blue-600 bg-transparent hover:bg-transparent transition-colors"
             >
               <FiX size={20} />
-            </button>
+            </Button>
           </div>
 
           <p className="text-accent-foreground/70 mb-6">
@@ -87,28 +98,34 @@ export default function AppTour({ features, onClose }: AppTourProps) {
           </p>
 
           <div className="flex justify-between items-center">
-            <div className="flex space-x-2">
-              {features.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-2 w-2 rounded-full ${
-                    index === currentStep ? "bg-blue-500" : "bg-gray-300"
-                  }`}
-                />
-              ))}
+            <div className="flex items-center space-x-2">
+              <div className="flex space-x-2">
+                {features.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-2 w-2 rounded-full ${
+                      index === currentStep ? "bg-blue-500" : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <span className="text-sm text-gray-600">
+                {currentStep + 1} / {features.length}
+              </span>
             </div>
 
             <div className="flex space-x-3">
               {currentStep > 0 && (
-                <button
+                <Button
                   onClick={handlePrev}
-                  className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors flex items-center"
+                  className="px-4 py-2 text-gray-600 bg-transparent hover:bg-gray-100 rounded-lg transition-colors flex items-center"
                 >
                   <FiChevronLeft className="mr-1" />
                   Back
-                </button>
+                </Button>
               )}
-              <button
+              <Button
                 onClick={handleNext}
                 className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition-colors flex items-center"
               >
@@ -116,7 +133,14 @@ export default function AppTour({ features, onClose }: AppTourProps) {
                 {currentStep < features.length - 1 && (
                   <FiChevronRight className="ml-1" />
                 )}
-              </button>
+              </Button>
+              <div
+                className="fixed bottom-6 right-6 z-50 cursor-pointer bg-green-600 hover:bg-green-700 gap-1 text-white p-2 rounded flex items-center shadow-lg transition duration-300 ease-in-out"
+                onClick={() => handleClose()}
+                style={{ display: showTour ? "" : "none" }}
+              >
+                {t("buttons.skipTour")} <IoMdSkipForward />
+              </div>
             </div>
           </div>
         </div>

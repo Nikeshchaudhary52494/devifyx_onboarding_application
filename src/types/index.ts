@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 
 export interface FeatureStep {
   id: string;
@@ -9,5 +9,6 @@ export interface FeatureStep {
 
 export interface AppTourProps {
   features: FeatureStep[];
-  onClose: () => void;
+  showTour: Boolean;
+  setShowTour: Dispatch<SetStateAction<boolean>>;
 }
